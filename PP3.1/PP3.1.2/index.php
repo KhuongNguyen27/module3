@@ -40,12 +40,12 @@ class QuadraticEquation {
     public function getRoot(){
         switch (true) {
             case $this->delta > 0:
-                $root_1 = (-$this->b + pow(pow($this->b,2)-4*$this->a*$this->c, 0.5))/(2*$this->a);
-                $root_2 = (-$this->b - pow(pow($this->b,2)-4*$this->a*$this->c, 0.5))/(2*$this->a);
+                $root_1 = (-$this->b + sqrt(pow($this->b,2)-4*$this->a*$this->c))/(2*$this->a);
+                $root_2 = (-$this->b - sqrt(pow($this->b,2)-4*$this->a*$this->c))/(2*$this->a);
                 return "Have two root x1 = ".$root_1.", x2 = ".$root_2;
                 break;
             case $this->delta == 0:
-                $root = (-$this->b + pow(pow($this->b,2)-4*$this->a*$this->c, 0.5))/2*$this->a;
+                $root = (-$this->b + sqrt(pow($this->b,2)-4*$this->a*$this->c))/2*$this->a;
                 return "Have root x1 = ".$root;
                 break;
             case $this->delta < 0:
