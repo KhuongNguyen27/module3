@@ -46,47 +46,73 @@
 // echo $rabbit->getName().'<br>';
 // echo $rabbit->getAge().'<br>';
 
-class Retangle{
-    private int $width;
-    private int $height;
-    public function __construct(int $width,int $height){
-        $this->width = $width;
-        $this->height = $height;
+// class Retangle{
+//     private int $width;
+//     private int $height;
+//     public function __construct(int $width,int $height){
+//         $this->width = $width;
+//         $this->height = $height;
+//     }
+//     public function setWidth(int $width){
+//         $this->width = $width;
+//     }
+//     public function getWidth(): int{
+//         return $this->width;
+//     }
+//     public function setHeight(int $height){
+//         $this->height = $height;
+//     }
+//     public function getHeight(): int{
+//         return $this->height;
+//     }
+//     public function getArea() : int{
+//         return $this->width*$this->height;
+//     }
+//     public function getPerimeter() : int{
+//         return ($this->width+$this->height)*2;
+//     }
+//     public function display() : string {
+//         return "Retangle{ Width = ".$this->getWidth()." And Height = ".$this->getHeight()."}";
+//     }
+//     public function __destruct(){
+//         echo '<br>'.__METHOD__.'<br>';
+//     }
+// }
+// $chunhat = new Retangle(20,20);
+// echo $chunhat->display().'<br>';
+// echo $chunhat->getArea().'<br>';
+// echo $chunhat->getPerimeter().'<br>';
+// $hinhvuong = $chunhat;
+// unset($chunhat);
+// $hinhvuong->setWidth(50);
+// $hinhvuong->setHeight(50);
+// echo $hinhvuong->display().'<br>';
+// echo $hinhvuong->getArea().'<br>';
+// echo $hinhvuong->getPerimeter();
+
+class Animal {
+    // khởi tạo thuộc tính  
+    private string $name = 'Animal';
+    private int $age = 0;
+    public string $color = 'Black';
+    private static string $msg = 'Hello';
+    // method
+    public function setName($name){
+       $this->name = $name; 
     }
-    public function setWidth(int $width){
-        $this->width = $width;
+    public function getName() : string{
+        return $this->name;
     }
-    public function getWidth(): int{
-        return $this->width;
+    public function setAge($age){
+        $this->age = $age; 
     }
-    public function setHeight(int $height){
-        $this->height = $height;
+    public function getAge() : int{
+         return $this->age;
     }
-    public function getHeight(): int{
-        return $this->height;
-    }
-    public function getArea() : int{
-        return $this->width*$this->height;
-    }
-    public function getPerimeter() : int{
-        return ($this->width+$this->height)*2;
-    }
-    public function display() : string {
-        return "Retangle{ Width = ".$this->getWidth()." And Height = ".$this->getHeight()."}";
-    }
-    public function __destruct(){
-        echo '<br>'.__METHOD__.'<br>';
-    }
+
 }
-$chunhat = new Retangle(20,20);
-echo $chunhat->display().'<br>';
-echo $chunhat->getArea().'<br>';
-echo $chunhat->getPerimeter().'<br>';
-$hinhvuong = $chunhat;
-unset($chunhat);
-$hinhvuong->setWidth(50);
-$hinhvuong->setHeight(50);
-echo $hinhvuong->display().'<br>';
-echo $hinhvuong->getArea().'<br>';
-echo $hinhvuong->getPerimeter();
+$dog = new Animal();
+echo '<pre>';
+print_r($dog);
+echo '</pre>';
 ?>
