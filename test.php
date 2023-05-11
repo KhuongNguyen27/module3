@@ -90,29 +90,78 @@
 // echo $hinhvuong->getArea().'<br>';
 // echo $hinhvuong->getPerimeter();
 
-class Animal {
-    // khởi tạo thuộc tính  
-    private string $name = 'Animal';
-    private int $age = 0;
-    public string $color = 'Black';
-    private static string $msg = 'Hello';
-    // method
-    public function setName($name){
-       $this->name = $name; 
+// class Animal {
+//     // khởi tạo thuộc tính  
+//     private string $name = 'Animal';
+//     private int $age = 0;
+//     public string $color = 'Black';
+//     private static string $msg = 'Hello';
+//     // method
+//     public function setName($name){
+//        $this->name = $name; 
+//     }
+//     public function getName() : string{
+//         return $this->name;
+//     }
+//     public function setAge($age){
+//         $this->age = $age; 
+//     }
+//     public function getAge() : int{
+//          return $this->age;
+//     }
+
+// }
+// $dog = new Animal();
+// echo '<pre>';
+// print_r($dog);
+// echo '</pre>';
+class Animal{
+    protected string $name;
+    private string $color = 'black';
+    public function __construct($name,$color = 'black'){
+        $this->name = $name;
     }
-    public function getName() : string{
+    public function setName($name){
+        $this->name = $name;
+    }
+    public function getName(){
         return $this->name;
     }
-    public function setAge($age){
-        $this->age = $age; 
+    public function getColor(){
+        return $this->color;
     }
-    public function getAge() : int{
-         return $this->age;
-    }
-
 }
-$dog = new Animal();
+class Human extends Animal{
+    public function setName($name,$age = 18){
+        if($age){
+            $this->name = $name.$age;
+        }
+        else {
+            $this->name = $name;
+        }
+    }
+    public function getName(){
+        return $this->name; 
+    }
+    // tạo color của lớp con không liên quan tới lớp cha
+    public function setColor($color){
+        $this->color = $color;
+    }
+    public function getColor(){
+        return $this->color;
+    }
+}
+$dog = new Animal('dog');
+$khuong = new Human('Khương');
 echo '<pre>';
 print_r($dog);
+print_r($khuong);
+$khuong->setName('Khuong',13);
+// Thuộc tính color có thể truy cập nhưng không thể thay đổi 
+echo $khuong->setColor('red');
+echo $dog->getName().'<br>';
+echo $dog->getColor().'<br>';
+echo $khuong->getName().'<br>';
+echo $khuong->getColor();
 echo '</pre>';
 ?>
