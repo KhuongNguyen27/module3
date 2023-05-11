@@ -60,6 +60,10 @@
             <?php endforeach;?>
         </tbody>
     </table>
-    </table>
+    <form action='ManagerEmployee/Create.php' method = 'GET'>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary mb-3">Create</button>
+        </div>
+    </form>
 </body>
 </html>
