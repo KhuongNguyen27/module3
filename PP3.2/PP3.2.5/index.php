@@ -7,14 +7,6 @@
     use Manager\Manager;
 
     $sql = "SELECT * FROM Employee";
-    $mysql = $conn->query($sql);
-    $mysql->setFetchMode(PDO :: FETCH_ASSOC);
-    $employee = $mysql->fetchAll();
-    $manager = new Manager();
-    foreach ($employee as  $employ) {
-        $manager->add(new Employee($employ['ID'], $employ['First_name'], $employ['Last_name'], $employ['Date_of_start'], $employ['Address'], $employ['Position']));
-    }
-    $employee = $manager->getInfor();
     // echo '<pre>';
     // print_r($employee);
     // echo '<pre>';
@@ -30,6 +22,20 @@
     <title>Document</title>
 </head>
 <body>
+    <?php
+    $records_per_page = 5;
+    $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
+    $offset = ($current_page - 1) * $records_per_page;
+    $sql = "SELECT * FROM employee LIMIT $records_per_page OFFSET $offset";
+    $mysql = $conn->query($sql);
+    $mysql->setFetchMode(PDO :: FETCH_ASSOC);
+    $employee = $mysql->fetchAll();
+    $manager = new Manager();
+    foreach ($employee as  $employ) {
+        $manager->add(new Employee($employ['ID'], $employ['First_name'], $employ['Last_name'], $employ['Date_of_start'], $employ['Address'], $employ['Position']));
+    }
+    $employee = $manager->getInfor();
+    ?>
     <p style='text-align:center; color:gray; ' class="fs-1" > Employee</p>
     <table class='table'>
     <thead>
@@ -60,6 +66,23 @@
             <?php endforeach;?>
         </tbody>
     </table>
+    <?php
+        $sql_count = "SELECT COUNT(*) as total FROM employee";
+        $stmt_count = $conn->query($sql_count);
+        $stmt_count->setFetchMode(PDO::FETCH_ASSOC);
+        $row_count = $stmt_count->fetch();
+        $total_records = $row_count['total'];
+        $total_pages = ceil($total_records / $records_per_page);
+    ?>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <?php for ($i=1; $i<=$total_pages; $i++) {?>
+                <li style = 'margin-left: 15px' class="page-item <?php if ($i==$current_page) echo 'active'; ?>">
+                    <a class="page-link" href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
+                </li>
+            <?php } ?>
+        </ul>
+    </nav> 
     <form action='ManagerEmployee/Create.php' method = 'GET'>
         <div class="col-auto">
             <button type="submit" class="btn btn-primary mb-3">Create</button>

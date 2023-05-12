@@ -1,0 +1,32 @@
+<?php
+// parent hình
+include 'Shape.php';
+// hình chữ nhật (parent::Shape)
+include 'Rectangle.php';
+// hình vuông (parent::Rectangle)
+include 'Square.php';
+//hình tròn (parent::Shape)
+include 'Circle.php';
+// hình trụ (parent::Circle)
+include 'Cylinder.php';
+
+$hinhtron = new Circle('Hinh tron',2);
+$hinhtron->show();
+echo "Area = ".$hinhtron->calculateArea().'<br>';
+echo "Perimeter = ".$hinhtron->calculatePerimeter().'<br>';
+//
+$hinhtru = new Cylinder('Hinh tru',3,4);
+$hinhtru->show();
+echo "Area = ".$hinhtru->calculateArea().'<br>';
+echo "Volume = ".$hinhtru->calculateVolume().'<br>';
+//
+$chunhat = new Rectangle('Hinh chu nhat',3,4);
+$chunhat->show();
+echo "Area = ".$chunhat->calculateArea().'<br>';
+echo "Perimeter = ".$chunhat->calculatePerimeter().'<br>';
+//
+$hinhvuong = new Square('Hinh vuong',3);
+$hinhvuong->show();
+echo "Area = ".$hinhvuong->calculateArea().'<br>';
+echo "Perimeter = ".$hinhvuong->calculatePerimeter().'<br>';
+?>

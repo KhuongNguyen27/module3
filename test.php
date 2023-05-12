@@ -115,53 +115,82 @@
 // echo '<pre>';
 // print_r($dog);
 // echo '</pre>';
-class Animal{
-    protected string $name;
-    private string $color = 'black';
-    public function __construct($name,$color = 'black'){
-        $this->name = $name;
+// class Animal{
+//     protected string $name;
+//     private string $color = 'black';
+//     public function __construct($name,$color = 'black'){
+//         $this->name = $name;
+//     }
+//     public function setName($name){
+//         $this->name = $name;
+//     }
+//     public function getName(){
+//         return $this->name;
+//     }
+//     public function getColor(){
+//         return $this->color;
+//     }
+// }
+// class Human extends Animal{
+//     public function setName($name,$age = 18){
+//         if($age){
+//             $this->name = $name.$age;
+//         }
+//         else {
+//             $this->name = $name;
+//         }
+//     }
+//     public function getName(){
+//         return $this->name; 
+//     }
+//     // tạo color của lớp con không liên quan tới lớp cha
+//     public function setColor($color){
+//         $this->color = $color;
+//     }
+//     public function getColor(){
+//         return $this->color;
+//     }
+// }
+// $dog = new Animal('dog');
+// $khuong = new Human('Khương');
+// echo '<pre>';
+// print_r($dog);
+// print_r($khuong);
+// $khuong->setName('Khuong',13);
+// // Thuộc tính color có thể truy cập nhưng không thể thay đổi 
+// echo $khuong->setColor('red');
+// echo $dog->getName().'<br>';
+// echo $dog->getColor().'<br>';
+// echo $khuong->getName().'<br>';
+// echo $khuong->getColor();
+// echo '</pre>';
+// abstract class Animal{
+//     public abstract function say(){}
+//     public abstract function move(){}
+// }
+// class Human extends Animal{
+//     public function say(){}
+//     public function move(){}
+// }
+/* 
+Không thể khởi tạo đối tượng
+Có các method bình thường
+Lớp có phương thức trừa tượng - lớp đó phải trừa tượng
+Lớp kế thừa từ lớp trừa tượng, phải triển khai lại All các method abstract
+Class abstract kế thừa từ Class abstract parent không cần phải triển khai lại method abstract 
+Class abstract không thể final
+Method abstract không thể final
+extends có mối quan hệ is a 
+interface có mối quan hệ can do
+*/
+interface Computer{
+    const MAX_SPEED = 4.0;
     }
-    public function setName($name){
-        $this->name = $name;
+    
+    class Laptop implements Computer{
+    const MAX_SPEED = 3.0;
     }
-    public function getName(){
-        return $this->name;
-    }
-    public function getColor(){
-        return $this->color;
-    }
-}
-class Human extends Animal{
-    public function setName($name,$age = 18){
-        if($age){
-            $this->name = $name.$age;
-        }
-        else {
-            $this->name = $name;
-        }
-    }
-    public function getName(){
-        return $this->name; 
-    }
-    // tạo color của lớp con không liên quan tới lớp cha
-    public function setColor($color){
-        $this->color = $color;
-    }
-    public function getColor(){
-        return $this->color;
-    }
-}
-$dog = new Animal('dog');
-$khuong = new Human('Khương');
-echo '<pre>';
-print_r($dog);
-print_r($khuong);
-$khuong->setName('Khuong',13);
-// Thuộc tính color có thể truy cập nhưng không thể thay đổi 
-echo $khuong->setColor('red');
-echo $dog->getName().'<br>';
-echo $dog->getColor().'<br>';
-echo $khuong->getName().'<br>';
-echo $khuong->getColor();
-echo '</pre>';
+    
+    $lap = new Laptop();
+    echo 'Max speed: ' . $lap->MAX_SPEED;
 ?>
