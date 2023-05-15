@@ -18,6 +18,6 @@ echo '</pre>';
 $PointMove = MoveablePoint::Move(3,4,5,6);
 echo '<pre>';
 print_r($PointMove);
+echo $PointMove->__toString();
 echo '</pre>';
-
 ?>
