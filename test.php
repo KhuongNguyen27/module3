@@ -183,14 +183,36 @@ Method abstract không thể final
 extends có mối quan hệ is a 
 interface có mối quan hệ can do
 */
-interface Computer{
-    const MAX_SPEED = 4.0;
-    }
+// interface Computer{
+//     const MAX_SPEED = 4.0;
+//     }
     
-    class Laptop implements Computer{
-    const MAX_SPEED = 3.0;
-    }
+//     class Laptop implements Computer{
+//     const MAX_SPEED = 3.0;
+//     }
     
-    $lap = new Laptop();
-    echo 'Max speed: ' . $lap->MAX_SPEED;
+//     $lap = new Laptop();
+//     echo 'Max speed: ' . $lap->MAX_SPEED;
+class MyArrayList{
+    private array $elements;
+    public function get($index){
+        return $this->elements[$index];
+    }
+    public function add($item){
+        $this->elements[] = $item;
+    }
+    public function addAtPos($item,$index){
+        array_splice($this->elements,$index,0,$item);
+    }
+    public function removeByIndex($index){    
+            array_splice($this->elements,$index,1);
+    }
+    public function size(){
+        return count($this->elements);
+    }
+    public function find($item){
+        return array_search($item,$this->elements)
+    }
+    public function isEmpty(){}
+}
 ?>
