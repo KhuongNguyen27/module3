@@ -193,26 +193,133 @@ interface có mối quan hệ can do
     
 //     $lap = new Laptop();
 //     echo 'Max speed: ' . $lap->MAX_SPEED;
-class MyArrayList{
-    private array $elements;
-    public function get($index){
-        return $this->elements[$index];
+
+/*----------------------------------------*/
+
+// class MyArrayList{
+//     private array $elements;
+//     public function get($index){
+//         return $this->elements[$index];
+//     }
+//     public function add($item){
+//         $this->elements[] = $item;
+//     }
+//     public function addAtPos($item,$index){
+//         array_splice($this->elements,$index,0,$item);
+//     }
+//     public function removeByIndex($index){    
+//             array_splice($this->elements,$index,1);
+//     }
+//     public function size(){
+//         return count($this->elements);
+//     }
+//     public function find($item){
+//         return array_search($item,$this->elements)
+//     }
+//     public function isEmpty(){}
+// }
+
+/*----------------------------------------*/
+/*
+interface Stack{
+    public function push(string $item); // thêm giá trị trên cùng
+    public function pop(); // xóa giá trị trên cùng
+    public function top(); // trả về giá trị trên cùng,nhưng không xóa nó đi
+    public function isEmpty(); // kiểm tra ngăn xếp đã đầy hay chưa 
+}
+class Books implements Stack{
+    protected array $stack = [];
+    protected $limit;
+    public function __construct($limit)
+    {
+        $this->limit = $limit;
     }
-    public function add($item){
-        $this->elements[] = $item;
+    public function push(string $item){
+        if (count($this->stack) >= $this->limit) {
+            throw new Exception("Stack Full");
+            
+        }else {
+            array_unshift($this->stack,$item);
+        }
+    } 
+    public function pop(){
+        if ($this->isEmpty()) {
+            throw new Exception("Stack Empty");
+        }else {
+            return array_shift($this->stack);
+        }
+    } 
+    public function top(){
+        return end($this->stack);
     }
-    public function addAtPos($item,$index){
-        array_splice($this->elements,$index,0,$item);
+    public function isEmpty(){
+        return empty($this->stack);
+    } 
+}
+echo "<pre>";
+try {
+    $books = new Books(3);
+    $books->push("Tin học 12");
+    $books->push("Toán 12");
+    $books->push("Vật lí 12");
+    // $books->push("Sinh học 12");
+} catch (Exception $e) {
+    echo $e->getMessage();
+}
+print_r($books);
+$books->pop();
+$books->push("Hóa học 12");
+print_r($books);
+echo $books->top();
+echo "</pre>";
+*/
+class Queue{
+    public array $container = [];
+    public int $limit;
+    public function __construct($limit){
+        $this->limit = $limit;
     }
-    public function removeByIndex($index){    
-            array_splice($this->elements,$index,1);
+    public function enqueue($item){
+        if ($this->isFull()) {
+            echo "Queue Full";
+        }else {
+            array_push($this->container,$item);
+        }
+    }
+    public function dequeue(){
+        return array_shift($this->container);
     }
     public function size(){
-        return count($this->elements);
+        return count($this->container);
     }
-    public function find($item){
-        return array_search($item,$this->elements)
+    public function isEmpty(){
+        return empty($this->container);
     }
-    public function isEmpty(){}
+    public function peek(){
+        if ($this->isEmpty()) {
+            echo "Queue NULL";
+        }else {
+            reset($this->container);
+            return current($this->container);
+        }
+    }
+    public function isFull(){
+        if(count($this->container) == $this->limit){
+            return true;
+        }
+        return false;
+    }
 }
+    $queue = new Queue(5);
+    $queue->enqueue('Huyen');
+    $queue->enqueue('Nho');
+    $queue->enqueue('Phong');
+    $queue->enqueue('Tam');
+    echo '<pre>';
+    print_r($queue);
+    var_dump($queue->isFull());
+    $queue->dequeue();
+    $queue->enqueue('Khương');
+    print_r($queue);
+    echo '</pre>';
 ?>
