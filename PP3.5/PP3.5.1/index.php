@@ -11,7 +11,7 @@ class Calculator
     {
         switch ($operator) {
             case ADDITION:
-                return $firstOperand + $secondOperand;
+                return $firstOperand + $secondOperand;dsadasd
             case SUBTRACTION:
                 return $firstOperand - $secondOperand;
             case MULTIPLICATION:
