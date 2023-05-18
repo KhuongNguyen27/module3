@@ -273,53 +273,77 @@ print_r($books);
 echo $books->top();
 echo "</pre>";
 */
-class Queue{
-    public array $container = [];
-    public int $limit;
-    public function __construct($limit){
-        $this->limit = $limit;
-    }
-    public function enqueue($item){
-        if ($this->isFull()) {
-            echo "Queue Full";
-        }else {
-            array_push($this->container,$item);
-        }
-    }
-    public function dequeue(){
-        return array_shift($this->container);
-    }
-    public function size(){
-        return count($this->container);
-    }
-    public function isEmpty(){
-        return empty($this->container);
-    }
-    public function peek(){
-        if ($this->isEmpty()) {
-            echo "Queue NULL";
-        }else {
-            reset($this->container);
-            return current($this->container);
-        }
-    }
-    public function isFull(){
-        if(count($this->container) == $this->limit){
-            return true;
-        }
-        return false;
-    }
-}
-    $queue = new Queue(5);
-    $queue->enqueue('Huyen');
-    $queue->enqueue('Nho');
-    $queue->enqueue('Phong');
-    $queue->enqueue('Tam');
+// class Queue{
+//     public array $container = [];
+//     public int $limit;
+//     public function __construct($limit){
+//         $this->limit = $limit;
+//     }
+//     public function enqueue($item){
+//         if ($this->isFull()) {
+//             echo "Queue Full";
+//         }else {
+//             array_push($this->container,$item);
+//         }
+//     }
+//     public function dequeue(){
+//         return array_shift($this->container);
+//     }
+//     public function size(){
+//         return count($this->container);
+//     }
+//     public function isEmpty(){
+//         return empty($this->container);
+//     }
+//     public function peek(){
+//         if ($this->isEmpty()) {
+//             echo "Queue NULL";
+//         }else {
+//             reset($this->container);
+//             return current($this->container);
+//         }
+//     }
+//     public function isFull(){
+//         if(count($this->container) == $this->limit){
+//             return true;
+//         }
+//         return false;
+//     }
+// }
+//     $queue = new Queue(5);
+//     $queue->enqueue('Huyen');
+//     $queue->enqueue('Nho');
+//     $queue->enqueue('Phong');
+//     $queue->enqueue('Tam');
+//     echo '<pre>';
+//     print_r($queue);
+//     var_dump($queue->isFull());
+//     $queue->dequeue();
+//     $queue->enqueue('Khương');
+//     print_r($queue);
+//     echo '</pre>';
+//SplStack Mode is LIFO (Last In First Out)
+    $q = new SplStack();
     echo '<pre>';
-    print_r($queue);
-    var_dump($queue->isFull());
-    $queue->dequeue();
-    $queue->enqueue('Khương');
-    print_r($queue);
+    $q->push('Khương');
+    $q->push('Phi');
+    $q->push('Hiếu');
+    $q->push('Long');
+    $q->rewind();
+    while($q->valid()){
+        echo $q->current(),"\n";
+        $q->next();
+    }
     echo '</pre>';
+    // $queue = new SplQueue();
+    // $queue->enqueue('Khương');
+    // $queue->enqueue('Phi');
+    // $queue->enqueue('Hiếu');
+    // $queue->enqueue('Long');
+    // $queue->rewind();
+    // echo $queue->current(), "\n";
+    // while ($queue->valid()) {
+    //     echo $queue->current(), "\n";
+    //     $queue->next();
+    // }
 ?>
