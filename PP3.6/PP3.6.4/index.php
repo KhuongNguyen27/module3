@@ -32,7 +32,7 @@ try {
     // echo $objLinkedList->indexOf('Tham');
     
     // $objLinkedList_2 = new LinkedList();
-    $objLinkedList_2 = $objLinkedList->clone();
+    $objLinkedList_2 = $objLinkedList->__clone();
     $objLinkedList->add('Hung');
     echo $objLinkedList->printList();
     print_r($objLinkedList_2);

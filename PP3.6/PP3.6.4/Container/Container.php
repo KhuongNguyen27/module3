@@ -72,12 +72,15 @@ class LinkedList{
         }
         return "Not  find variable in LinkedList";
     }
-    function clone(){
-        $data = $this->getList();
-        $tmp = $data;
-        $tmp = clone $data;
-        return $tmp;
+    function __clone() {
+        $current = $this->firstNode;
+        while ($current != null) {
+            $value = $this->add($current->data);
+            $current = $current->next; 
+            }
+        return $value;
     }
+
     function printList(){
         $current = $this->firstNode;
         while ($current != null) {
