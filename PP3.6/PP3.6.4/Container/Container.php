@@ -37,6 +37,7 @@ class LinkedList{
     function get($index){
         if (is_numeric($index) && $index<=$this->count) {
             $current = $this->firstNode;
+            // $current = clone $this->firstNode;
             $position = 1;
             while ($position <= $this->count) {
                 if ($position == $index) {
@@ -48,9 +49,21 @@ class LinkedList{
                 $current = $current->next;
                 $position++;
             }
-        }else{
-            throw new Exception("Index is not available");
+        }
+    }
+    function remove($index){
+        if (is_numeric($index) && $index<=$this->count) {
+            $current = $this->firstNode;
+            $position = 1;
+            while ($position <= $this->count) {
+                if ($position == $index-1) {
+                    $current->next = $current->next->next;
+                    return $current;
+                }
+                $current = $current->next;
+                $position++;
             }
+        }
     }
     function contains($item){
         $current = $this->firstNode;
@@ -70,17 +83,16 @@ class LinkedList{
             $current = $current->next;
             $position++;
         }
-        return "Not  find variable in LinkedList";
     }
-    function __clone() {
+    function clone(){
+        $value = new LinkedList();
         $current = $this->firstNode;
         while ($current != null) {
-            $value = $this->add($current->data);
+            $value->add($current->data);
             $current = $current->next; 
-            }
+        }
         return $value;
     }
-
     function printList(){
         $current = $this->firstNode;
         while ($current != null) {
