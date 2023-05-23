@@ -9,7 +9,7 @@
         <th></th>
         <th></th>
     </tr>
-    <?php foreach ($rows as $row) :?>
+    <?php foreach ($result['rows'] as $row) :?>
     <tr>
         <td><?php echo $row['ID']?></td>
         <td><?php echo $row['Name']?></td>
@@ -26,9 +26,10 @@
         </td>
     </tr>
     <?php endforeach; ?>
-</table>
-<form class="row g-3" action = "index.php?controller=products&action=getCreate" method = "POST">
+  </table>
+  <form class="row g-3" action = "index.php?controller=products&action=getCreate" method = "POST">
   <div class="col-auto">
     <input type="submit" class="btn btn-primary mb-3" value = "Create">
   </div>
 </form>
+<?php include_once 'Pagination.php';?>

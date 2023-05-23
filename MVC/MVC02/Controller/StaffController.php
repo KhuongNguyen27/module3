@@ -1,7 +1,7 @@
 <?php
 namespace StaffController;
 include_once 'Model/Staff.php';
-include_once 'Controller.php';
+include_once dirname(__FILE__).'/Controller.php';
 use Staff\Staff;
 use Controller\Controller;
 class StaffController extends Controller{

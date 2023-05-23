@@ -1,12 +1,13 @@
 <?php
 namespace ProductController;
 include_once 'Model/Products.php';
-include_once 'Controller.php';
+include_once dirname(__FILE__).'/Controller.php';
+use PDO;
 use Products\Products;
 use Controller\Controller;
 class ProductController extends Controller{
     function index(){
-        $rows = Products::index();
+        $result = Products::index();
         include_once 'View/ProductsView/index.php';
     }
     function getView(){

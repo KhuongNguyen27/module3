@@ -1,38 +1,18 @@
 <?php
 use ProductController\ProductController;
 use StaffController\StaffController;
+
 switch ($controller) {
     case 'products':
         $objController = new ProductController();
+        include_once 'Include/process.php';
         break;  
     case 'staff':
         $objController = new StaffController();
+        include_once 'Include/process.php';
         break;      
-}
-switch ($action) {
-    case 'index':
-        $objController->index();
-        break;
-    case 'getView':
-        $objController->getView();
-        break;
-    case 'delete':
-        $objController->delete();
-        break;
-    case 'getEdit':
-        $objController->getEdit();
-        break;
-    case 'edit':
-        $objController->edit();
-        break;
-    case 'getCreate':
-        $objController->getCreate();
-        break;
-    case 'create':
-        $objController->create();
-        break;
-    case 'search':
-        $objController->search();
+    case 'local':
+        include_once 'Include/controller.php';
         break;
 }
 ?>

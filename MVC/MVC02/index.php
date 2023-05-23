@@ -3,11 +3,9 @@
     include_once 'db.php';
     include_once 'Controller/ProductController.php';
     include_once 'Controller/StaffController.php';
-    use ProductController\ProductController;
-    use StaffController\StaffController;
+    $local = isset($_GET['local'])?$_GET['local']: null ;
     $controller = isset($_GET['controller'])?$_GET['controller']: 'products ';
     $action = isset($_GET['action'])?$_GET['action']:'index';
-    $ID = isset($_GET['ID'])?$_GET['ID']:'';
 ?>
 <body id="page-top">
     <div id="wrapper">
@@ -16,7 +14,9 @@
             <div id="content">
                 <?php include_once 'Include/nav.php'?>
                 <div class="container-fluid">
-                    <?php include_once 'process.php'?>
+                    <?php 
+                        include_once 'process.php';
+                    ?>
                 </div>
             </div>
             <?php include_once 'include/footer.php'?>
