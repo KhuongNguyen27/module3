@@ -1,4 +1,14 @@
-<?php include_once 'Include/header.php'?>
+<?php 
+    include_once 'Include/header.php';
+    include_once 'db.php';
+    include_once 'Controller/ProductController.php';
+    include_once 'Controller/StaffController.php';
+    use ProductController\ProductController;
+    use StaffController\StaffController;
+    $controller = isset($_GET['controller'])?$_GET['controller']: 'products ';
+    $action = isset($_GET['action'])?$_GET['action']:'index';
+    $ID = isset($_GET['ID'])?$_GET['ID']:'';
+?>
 <body id="page-top">
     <div id="wrapper">
         <?php include_once 'Include/sidebar.php'?>

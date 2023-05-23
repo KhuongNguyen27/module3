@@ -1,47 +1,40 @@
 <?php
 namespace ProductController;
 include_once 'Model/Products.php';
+include_once 'Controller.php';
 use Products\Products;
-class ProductController{
+use Controller\Controller;
+class ProductController extends Controller{
     function index(){
         $rows = Products::index();
-        include_once 'View/index.php';
+        include_once 'View/ProductsView/index.php';
     }
     function getView(){
         $rows = Products::getView();
-        include_once 'View/getView.php';
+        include_once 'View/ProductsView/getView.php';
     }
     function delete(){
         Products::delete();
-        $this->redirect('index.php');
+        $this->redirect('index.php?controller=products');
     }
     function getEdit(){
         $rows = Products::getView();
-        include_once 'View/getEdit.php';
+        include_once 'View/ProductsView/getEdit.php';
     }
     function edit(){
         $rows = Products::edit();
-        $this->redirect('index.php');
+        $this->redirect('index.php?controller=products');
     }
     function getCreate(){
-        include_once 'View/getCreate.php';
+        include_once 'View/ProductsView/getCreate.php';
     }
     function create(){
         Products::create();
-        $this->redirect('index.php');
+        $this->redirect('index.php?controller=products');
     }
     function search(){
         $rows = Products::search();
-        include_once 'View/getSearch.php';
-    }
-    function redirect($url){
-    ?>
-        <script>
-            if (confirm('Succesfull')) {
-                window.location = "<?= $url?>"
-            }
-        </script>
-    <?php
+        include_once 'View/ProductsView/getSearch.php';
     }
 }
 ?>

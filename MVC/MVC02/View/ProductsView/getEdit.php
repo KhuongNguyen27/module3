@@ -1,5 +1,4 @@
-<?php include_once 'indexForm.php'?>
-<form action="index.php?action=edit&ID=<?php echo $rows['ID']?>" method="post">
+<form action="index.php?controller=products&action=edit&ID=<?php echo $rows['ID']?>" method="post">
     <div class="mb-3">
         <label class="form-label">Name</label>
         <input type="text" class="form-control" name = "Name" placeholder = "<?php echo $rows['Name']?>" value = "<?php echo $rows['Name']?>">
