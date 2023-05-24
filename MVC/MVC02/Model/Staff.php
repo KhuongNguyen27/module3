@@ -4,11 +4,26 @@ use PDO;
 class Staff{
     static function index(){
         global $conn;
-        $sql = 'SELECT * FROM staff_list';
+        global $record_per_page;
+        $record_per_page = 5;
+        $current_page = isset($_GET['page'])?$_GET['page']:1;
+        $offset = ($current_page - 1) * $record_per_page;
+        $sql = "SELECT * FROM staff_list";
+        $sql_count = "SELECT COUNT(ID) as total FROM staff_list";
+        $stmt_count = $conn->query($sql_count);
+        $stmt_count->setFetchMode(PDO::FETCH_ASSOC);
+        $row_count = $stmt_count->fetch();
+        $total_records = $row_count['total'];
+        $total_pages = ceil($total_records / $record_per_page);
+        $sql .=" LIMIT $record_per_page OFFSET $offset";
         $mysql = $conn->query($sql);
         $mysql->setFetchMode(PDO :: FETCH_ASSOC);
         $rows = $mysql->fetchAll();
-        return $rows;
+        $result = [
+            'rows' => $rows,
+            'total_pages' => $total_pages,
+        ];
+        return $result;
     }
     static function getView(){
         global $conn;
@@ -51,16 +66,28 @@ class Staff{
     }
     static function search(){
         global $conn;
-        $search = isset($_POST['search'])?$_POST['search']: null;
-        if (empty($search)) {
-            $sql = "SELECT * FROM staff_list";
-        }else{
-            $sql = "SELECT * FROM staff_list WHERE ID LIKE '%$search%' OR Name_staff LIKE '%$search%' OR Position LIKE '%$search%' OR Branch LIKE '%$search%'  OR Old LIKE '%$search%' OR Day_of_start LIKE '%$search%' OR Slary LIKE '%$search%' ";
-        }
+        global $record_per_page;
+        $record_per_page = 5;
+        $current_page = isset($_GET['page'])?$_GET['page']:1;
+        $search = isset($_REQUEST['search'])?$_REQUEST['search']:'';
+        $offset = ($current_page - 1)* $record_per_page;
+        $sql = "SELECT * FROM staff_list WHERE ID LIKE '%$search%' OR Name_staff LIKE '%$search%' OR Position LIKE '%$search%' OR Branch LIKE '%$search%' OR Old LIKE '%$search%' OR Day_of_start LIKE '%$search%' OR Slary LIKE '%$search%'";
+        $sql_count = "SELECT COUNT(ID) as total FROM staff_list WHERE ID LIKE '%$search%' OR Name_staff LIKE '%$search%' OR Position LIKE '%$search%' OR Branch LIKE '%$search%' OR Old LIKE '%$search%' OR Day_of_start LIKE '%$search%' OR Slary LIKE '%$search%'";
+        $stmt_count  = $conn->query($sql_count);
+        $stmt_count->setFetchMode(PDO::FETCH_ASSOC);
+        $row_count = $stmt_count->fetch();
+        $total_records = $row_count['total'];
+        $total_pages = ceil($total_records / $record_per_page);
+        $sql .= "LIMIT $record_per_page OFFSET $offset";
         $mysql = $conn->query($sql);
         $mysql->setFetchMode(PDO::FETCH_ASSOC);
         $rows = $mysql->fetchAll();
-        return $rows;
+        
+        $result = [
+            'rows' => $rows,
+            'total_pages' => $total_pages,
+        ];
+        return $result;
     }
 }
 ?>

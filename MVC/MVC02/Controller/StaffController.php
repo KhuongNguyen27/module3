@@ -6,7 +6,7 @@ use Staff\Staff;
 use Controller\Controller;
 class StaffController extends Controller{
     function index(){
-        $rows = Staff::index();
+        $result = Staff::index();
         include_once 'View/StaffView/index.php';  
     }
     function getView(){
@@ -33,7 +33,7 @@ class StaffController extends Controller{
         $this->redirect('index.php?controller=staff');
     }
     function search(){
-        $rows = Staff::search();
+        $result = Staff::search();
         include_once 'View/StaffView/getSearch.php';
     }
 }

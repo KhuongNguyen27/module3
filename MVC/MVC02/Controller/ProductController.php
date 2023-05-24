@@ -34,7 +34,7 @@ class ProductController extends Controller{
         $this->redirect('index.php?controller=products');
     }
     function search(){
-        $rows = Products::search();
+        $result = Products::search();
         include_once 'View/ProductsView/getSearch.php';
     }
 }

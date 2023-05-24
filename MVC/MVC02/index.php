@@ -3,9 +3,9 @@
     include_once 'db.php';
     include_once 'Controller/ProductController.php';
     include_once 'Controller/StaffController.php';
-    $local = isset($_GET['local'])?$_GET['local']: null ;
-    $controller = isset($_GET['controller'])?$_GET['controller']: 'products ';
-    $action = isset($_GET['action'])?$_GET['action']:'index';
+    $local = isset($_GET['local'])?$_GET['local']: "local" ;
+    $controller = isset($_GET['controller'])?$_GET['controller']: "local";
+    $action = isset($_GET['action'])?$_GET['action']: "index" ;
 ?>
 <body id="page-top">
     <div id="wrapper">

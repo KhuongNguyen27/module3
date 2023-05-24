@@ -32,4 +32,4 @@
     <input type="submit" class="btn btn-primary mb-3" value = "Create">
   </div>
 </form>
-<?php include_once 'Pagination.php';?>
+<?php include_once 'View/Pagination/Pagination.php';?>

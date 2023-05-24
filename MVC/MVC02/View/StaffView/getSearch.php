@@ -11,7 +11,7 @@
         <th></th>
         <th></th>
     </tr>
-    <?php foreach ($rows as $row) :?>
+    <?php foreach ($result['rows'] as $row) :?>
     <tr>
         <td><?php echo $row['ID']?></td>
         <td><?php echo $row['Name_staff']?></td>
@@ -37,3 +37,4 @@
     <input type="submit" class="btn btn-primary mb-3" value = "Create">
   </div>
 </form>
+<?php include_once 'View/Pagination/Pagination.php';?>
