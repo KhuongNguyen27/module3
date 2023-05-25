@@ -323,18 +323,18 @@ echo "</pre>";
 //     print_r($queue);
 //     echo '</pre>';
 //SplStack Mode is LIFO (Last In First Out)
-    $q = new SplStack();
-    echo '<pre>';
-    $q->push('Khương');
-    $q->push('Phi');
-    $q->push('Hiếu');
-    $q->push('Long');
-    $q->rewind();
-    while($q->valid()){
-        echo $q->current(),"\n";
-        $q->next();
-    }
-    echo '</pre>';
+    // $q = new SplStack();
+    // echo '<pre>';
+    // $q->push('Khương');
+    // $q->push('Phi');
+    // $q->push('Hiếu');
+    // $q->push('Long');
+    // $q->rewind();
+    // while($q->valid()){
+    //     echo $q->current(),"\n";
+    //     $q->next();
+    // }
+    // echo '</pre>';
     // $queue = new SplQueue();
     // $queue->enqueue('Khương');
     // $queue->enqueue('Phi');
@@ -346,4 +346,18 @@ echo "</pre>";
     //     echo $queue->current(), "\n";
     //     $queue->next();
     // }
+    /*CSS */    
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="grid.css">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
