@@ -5,11 +5,12 @@ $search = isset($_GET['search']) ? $_GET['search'] : '';
 $controller = isset($_GET['controller']) ? $_GET['controller'] : '';
 ?>
 <nav aria-label="Page navigation example">
-    <ul class="pagination">
-        <?php for ($i=1; $i<=$total_pages; $i++) { ?>
-        <li style='margin-left: 15px' class="page-item <?php if ($i==$current_page) echo 'active'; ?>">
-            <a class="page-link" href="?controller=<?php echo $controller;?>&page=<?php echo $i;?>&search=<?php echo $search;?>"><?php echo $i; ?></a>
-        </li>
-        <?php } ?>
-    </ul>
+     <ul class="pagination">
+         <?php  for ($i=1; $i<=$total_pages; $i++) { ?>
+         <li style='margin-left: 15px' class="page-item <?php  if ($i==$current_page) echo 'active'; ?>">
+             <a class="page-link" href="?controller=<?php  echo $controller;?>&page=<?php  echo $i;?>&search=<?php  echo $search;?>"><?php echo $i; ?></a>
+         </li>
+         <?php } ?>
+     </ul> 
 </nav>
+

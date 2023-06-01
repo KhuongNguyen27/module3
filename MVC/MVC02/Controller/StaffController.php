@@ -18,6 +18,7 @@ class StaffController extends Controller{
         include_once 'View/StaffView/getEdit.php';  
     }
     function getCreate(){
+        $result = Staff::index();
         include_once 'View/StaffView/getCreate.php';  
     }
     function create(){
