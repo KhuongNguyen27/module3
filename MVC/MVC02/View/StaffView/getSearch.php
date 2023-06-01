@@ -24,7 +24,7 @@
           <a href= "index.php?controller=staff&action=getEdit&ID=<?php echo $row['ID']?>">Edit</a>
         </td>
         <td>
-          <a onclick = "return confirm('Are you sure?')";  href= "index.php?controller=staff&action=delete&ID=<?php echo $row['ID']?>">Delete</a>
+          <a style = 'color:red;' onclick = "return confirm('Are you sure?')";  href= "index.php?controller=staff&action=delete&ID=<?php echo $row['ID']?>">Delete</a>
         </td>
         <td>
           <a href= "index.php?controller=staff&action=getView&ID=<?php echo $row['ID']?>">View</a>

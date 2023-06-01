@@ -1,6 +1,7 @@
 <?php
 namespace Staff;
 use PDO;
+use Exception;
 class Staff{
     static function index(){
         global $conn;
@@ -38,25 +39,58 @@ class Staff{
     static function edit(){
         global $conn;
         $ID = $_GET['ID'];
-        $Name_staff = $_POST['Name_staff'];
-        $Position = $_POST['Position'];
-        $Branch = $_POST['Branch'];
-        $Old = $_POST['Old'];
-        $Day_of_start = $_POST['Day_of_start'];
-        $Slary = $_POST['Slary'];
+        global $conn;
+            $Name_staff = $_POST['Name_staff'];
+            if (empty($Name_staff)) {
+                throw new Exception("Name_staff not found, Please try again");
+                die();
+            }
+            $Position = $_POST['Position'];
+            $Branch = $_POST['Branch'];
+            $Old = $_POST['Old'];
+            if (empty($Old)) {
+                throw new Exception("Old not found");
+                die();
+            }
+            $Day_of_start = $_POST['Day_of_start'];
+            if (empty($Day_of_start)) {
+                throw new Exception("Day_of_start not found");
+                die();
+            }
+            $Slary = $_POST['Slary'];
+            if (empty($Slary)) {
+                throw new Exception("Slary not found");
+                die();
+            }
         $sql = "UPDATE `staff_list` SET `Name_staff` = '$Name_staff', `Position` = '$Position', `Branch` = '$Branch', `Old` = '$Old', `Day_of_start` = '$Day_of_start', `Slary` = '$Slary' WHERE `staff_list`.`ID` = $ID;";
         $conn->query($sql);
     }
     static function create(){
         global $conn;
-        $Name_staff = $_POST['Name_staff'];
-        $Position = $_POST['Position'];
-        $Branch = $_POST['Branch'];
-        $Old = $_POST['Old'];
-        $Day_of_start = $_POST['Day_of_start'];
-        $Slary = $_POST['Slary'];
-        $sql = "INSERT INTO `staff_list` (`ID`, `Name_staff`, `Position`, `Branch`, `Old`, `Day_of_start`, `Slary`) VALUES (NULL, '$Name_staff', '$Position', '$Branch', '$Old', '$Day_of_start', '$Slary');";
-        $conn->query($sql);
+            $Name_staff = $_POST['Name_staff'];
+            if (empty($Name_staff)) {
+                throw new Exception("Name_staff not found, Please try again");
+                die();
+            }
+            $Position = $_POST['Position'];
+            $Branch = $_POST['Branch'];
+            $Old = $_POST['Old'];
+            if (empty($Old)) {
+                throw new Exception("Old not found");
+                die();
+            }
+            $Day_of_start = $_POST['Day_of_start'];
+            if (empty($Day_of_start)) {
+                throw new Exception("Day_of_start not found");
+                die();
+            }
+            $Slary = $_POST['Slary'];
+            if (empty($Slary)) {
+                throw new Exception("Slary not found");
+                die();
+            }
+            $sql = "INSERT INTO `staff_list` (`ID`, `Name_staff`, `Position`, `Branch`, `Old`, `Day_of_start`, `Slary`) VALUES (NULL, '$Name_staff', '$Position', '$Branch', '$Old', '$Day_of_start', '$Slary');";
+            $conn->query($sql);
     }
     static function delete(){
         global $conn;

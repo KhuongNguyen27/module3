@@ -1,16 +1,11 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php?controller=local">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php?controller=staff">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
         <div class="sidebar-brand-text mx-3">Manager</div>
     </a>
     <hr class="sidebar-divider my-0">
-    <li class="nav-item active">
-        <a class="nav-link" href="index.php?controller=products">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Products</span></a>
-    </li>
     <li class="nav-item active">
         <a class="nav-link" href="index.php?controller=staff">
             <i class="fas fa-fw fa-tachometer-alt"></i>

@@ -14,16 +14,24 @@ class StaffController extends Controller{
         include_once 'View/StaffView/getView.php';  
     }
     function getEdit(){
-        $row = Staff::getView();
-        include_once 'View/StaffView/getEdit.php';  
+        try {
+            $row = Staff::getView();
+            include_once 'View/StaffView/getEdit.php';
+        } catch (Exception $e) {
+            echo "<h1>Error: Please try again</h1>";
+        }  
     }
     function getCreate(){
         $result = Staff::index();
         include_once 'View/StaffView/getCreate.php';  
     }
     function create(){
-        Staff::create();
-        $this->redirect('index.php?controller=staff');
+        try {
+            Staff::create();
+            $this->redirect('index.php?controller=staff');
+        } catch (Exception $e) {
+            echo "<h1>Error: Please try again</h1>";
+        }
     }
     function edit(){
         Staff::edit();

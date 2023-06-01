@@ -19,7 +19,7 @@
         <td><?php echo $row['Slary']?></td>
         <td>
             <a href= "index.php?controller=staff&action=getEdit&ID=<?php echo $row['ID']?>">Edit</a>
-            <a onclick = "return confirm('Are you sure?')";  href= "index.php?controller=staff&action=deleteID&ID=<?php echo $row['ID']?>">Delete</a>
+            <a style = 'color:red;' onclick = "return confirm('Are you sure?')";  href= "index.php?controller=staff&action=deleteID&ID=<?php echo $row['ID']?>">Delete</a>
             <!-- <a href= "index.php?action=getView&ID=<?php echo $row['ID']?>">View</a> -->
         </td>
     </tr>

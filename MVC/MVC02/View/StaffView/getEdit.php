@@ -24,4 +24,5 @@
         <input type="text" class="form-control" name = "Slary" placeholder = "<?php echo $row['Slary']?>" value = "<?php echo $row['Slary']?>">
     </div>
     <button type="submit" class="btn btn-primary" onclick = "return confirm('Are you sure?')">Edit</button>
+    <button type="button" class="btn btn-primary ml-4" onclick="return window.location = 'index.php?controller=staff&action=index'">Cancel</button>
 </form>        	

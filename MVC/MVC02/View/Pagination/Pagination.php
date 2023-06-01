@@ -5,12 +5,39 @@ $search = isset($_GET['search']) ? $_GET['search'] : '';
 $controller = isset($_GET['controller']) ? $_GET['controller'] : '';
 ?>
 <nav aria-label="Page navigation example">
-     <ul class="pagination">
-         <?php  for ($i=1; $i<=$total_pages; $i++) { ?>
-         <li style='margin-left: 15px' class="page-item <?php  if ($i==$current_page) echo 'active'; ?>">
-             <a class="page-link" href="?controller=<?php  echo $controller;?>&page=<?php  echo $i;?>&search=<?php  echo $search;?>"><?php echo $i; ?></a>
-         </li>
-         <?php } ?>
-     </ul> 
-</nav>
+    <ul class="pagination">
+        <?php
+        $visible_pages = min($total_pages, 3);
+        $start_page = max(1,$current_page - 1);
+        $end_page = min($start_page + $visible_pages - 1, $total_pages);
+        ?>
 
+        <?php if ($current_page > 1) : ?>
+        <a class="page-link"
+            href="?controller=staff&action=search&page=<?php echo $current_page - 1; ?><?php if (!empty($search)) echo '&search=' . urlencode($search); ?><?php if (!empty($result['search_s1'])) echo '&s1=' . urlencode($result['search_s1']); ?>"
+            aria-label="Trang trước">
+            <span aria-hidden="true">&laquo;</span>
+        </a>
+        <?php endif; ?>
+
+        <?php for ($i = $start_page; $i <= $end_page; $i++) : ?>
+        <?php if ($i == $current_page) : ?>
+        <a class="page-link active"
+            href="?controller=staff&action=search&page=<?php echo $i; ?><?php if (!empty($search)) echo '&search=' . urlencode($search); ?><?php if (!empty($result['search_s1'])) echo '&s1=' . urlencode($result['search_s1']); ?>"><?php echo $i; ?></a>
+        <?php else : ?>
+        <a class="page-link"
+            href="?controller=staff&action=search&page=<?php echo $i; ?><?php if (!empty($search)) echo '&search=' . urlencode($search); ?><?php if (!empty($result['search_s1'])) echo '&s1=' . urlencode($result['search_s1']); ?>">
+            <?php echo $i; ?>
+        </a>
+        <?php endif; ?>
+        <?php endfor; ?>
+
+        <?php if ($current_page < $total_pages) : ?>
+        <a class="page-link"
+            href="?controller=staff&action=search&page=<?php echo $current_page + 1; ?><?php if (!empty($search)) echo '&search=' . urlencode($search); ?><?php if (!empty($result['search_s1'])) echo '&s1=' . urlencode($result['search_s1']); ?>"
+            aria-label="Trang sau">
+            <span aria-hidden="true">&raquo;</span>
+        </a>
+        <?php endif; ?>
+    </ul>
+</nav>

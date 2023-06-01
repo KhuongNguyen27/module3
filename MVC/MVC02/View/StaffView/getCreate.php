@@ -15,7 +15,7 @@
         <label class="form-label">Branch</label>
         <select class='form-control' name="Branch">
             <?php foreach ($result['rows'] as $row):?>
-            <option value=""><?php echo $row['Branch']?></option>
+            <option value="<?php echo $row['Branch']?>"><?php echo $row['Branch']?></option>
             <?php endforeach; ?>
         </select>
     </div>
@@ -32,4 +32,5 @@
         <input type="text" class="form-control" name="Slary" placeholder="Slary">
     </div>
     <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure?')">Create</button>
+    <button type="button" class="btn btn-primary ml-4" onclick="return window.location = 'index.php?controller=staff&action=index'">Cancel</button>
 </form>
